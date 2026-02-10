@@ -1,43 +1,22 @@
-## 2d polygons ----
-
-#'  Brainnetome atlas
+#' Brainnetome Atlas
 #'
-#'  The functional specialization of the human cingulate cortex analyzed by the resting-state functional
-#'  connectivity (FC) of each subregion from a network perspective.
+#' Brain atlas for the Brainnetome cortical parcellation with 105 regions
+#' per hemisphere. Contains 2D polygon geometry for [ggseg::geom_brain()].
 #'
 #' @docType data
 #' @name brainnetome
+#' @usage data(brainnetome)
 #' @keywords datasets
 #' @family ggseg_atlases
-#' @references Yu C, Zhou Y, Liu Y, Jiang T, Dong H, Zhang Y, Walter M.
-#'     Functional segregation of the human cingulate cortex is confirmed by functional connectivity based neuroanatomical parcellation.
-#'     Neuroimage. 2011 Feb 14;54(4):2571-81.
-#'     doi: 10.1016/j.neuroimage.2010.11.018.
-#'     Epub 2010 Nov 10. PMID: 21073967.
-#'     (\href{https://pubmed.ncbi.nlm.nih.gov/21073967/}{PubMed})
 #'
+#' @references Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z,
+#'   Chu C, Xie S, Laird AR, Fox PT, Eickhoff SB, Yu C, Jiang T (2016).
+#'   The Human Brainnetome Atlas: A New Brain Atlas Based on Connectional
+#'   Architecture. *Cerebral Cortex*, 26(8):3508-3526.
+#'   \doi{10.1093/cercor/bhw157}
+#'
+#' @format A [ggseg.formats::ggseg_atlas] object (cortical).
 #' @examples
 #' data(brainnetome)
+#' brainnetome
 "brainnetome"
-
-
-### 3d meshes ----
-#'  Brainnetome 3d atlas
-#'
-#'  The functional specialization of the human cingulate cortex analyzed by the resting-state functional
-#'  connectivity (FC) of each subregion from a network perspective.
-#'
-#' @docType data
-#' @name brainnetome_3d
-#' @keywords datasets
-#' @family ggseg3d_atlases
-#' @references Yu C, Zhou Y, Liu Y, Jiang T, Dong H, Zhang Y, Walter M.
-#'     Functional segregation of the human cingulate cortex is confirmed by functional connectivity based neuroanatomical parcellation.
-#'     Neuroimage. 2011 Feb 14;54(4):2571-81.
-#'     doi: 10.1016/j.neuroimage.2010.11.018.
-#'     Epub 2010 Nov 10. PMID: 21073967.
-#'     (\href{https://pubmed.ncbi.nlm.nih.gov/21073967/}{PubMed})
-#'
-#' @examples
-#' data(brainnetome_3d)
-"brainnetome_3d"

@@ -13,8 +13,8 @@ Brainnetome atlas for the 'ggseg' ecosystem. Provides a 'ggseg_atlas' object wit
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/ggseg/ggsegBrainnetome}
-  \item Report bugs at \url{https://github.com/ggseg/ggsegBrainnetome/issues}
+  \item \url{https://github.com/ggsegverse/ggsegBrainnetome}
+  \item Report bugs at \url{https://github.com/ggsegverse/ggsegBrainnetome/issues}
 }
 
 }

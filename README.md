@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/ggseg/ggsegBrainnetome/workflows/R-CMD-check/badge.svg)](https://github.com/ggseg/ggsegBrainnetome/actions)
+[![R-CMD-check](https://github.com/ggsegverse/ggsegBrainnetome/workflows/R-CMD-check/badge.svg)](https://github.com/ggsegverse/ggsegBrainnetome/actions)
 [![DOI](https://zenodo.org/badge/416644902.svg)](https://zenodo.org/badge/latestdoi/416644902)
 <!-- badges: end -->
 
@@ -19,18 +19,18 @@ connectivity based neuroanatomical parcellation. Neuroimage. 2011 Feb
 10. PMID: 21073967. [pubmed](https://pubmed.ncbi.nlm.nih.gov/21073967/).
 
 To learn how to use these atlases, please look at the documentation for
-[ggseg](https://ggseg.github.io/ggseg/) and
-[ggseg3d](https://ggseg.github.io/ggseg3d)
+[ggseg](https://ggsegverse.github.io/ggseg/) and
+[ggseg3d](https://ggsegverse.github.io/ggseg3d)
 
 ## Installation
 
 We recommend installing the ggseg-atlases through the ggseg
-[r-universe](https://ggseg.r-universe.dev/ui#builds):
+[r-universe](https://ggsegverse.r-universe.dev/ui#builds):
 
 ``` r
 # Enable this universe
 options(repos = c(
-    ggseg = 'https://ggseg.r-universe.dev',
+    ggsegverse = 'https://ggsegverse.r-universe.dev',
     CRAN = 'https://cloud.r-project.org'))
 
 # Install some packages

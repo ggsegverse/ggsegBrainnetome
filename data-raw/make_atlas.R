@@ -12,11 +12,12 @@
 Sys.setenv(RGL_USE_NULL = TRUE)
 
 library(dplyr)
-library(ggsegExtra)
+library(ggseg.extra)
 library(ggseg.formats)
 
 options(freesurfer.verbose = FALSE)
-future::plan(future::multisession(workers = 4))
+options(chromote.timeout = 120)
+future::plan(future::sequential)
 progressr::handlers("cli")
 progressr::handlers(global = TRUE)
 
@@ -33,21 +34,18 @@ for (f in annot_files) {
 
 cli::cli_h1("Creating brainnetome cortical atlas")
 
-atlas_raw <- create_cortical_atlas(
+atlas_raw <- create_cortical_from_annotation(
   input_annot = annot_files,
   atlas_name = "brainnetome",
   output_dir = "data-raw",
   tolerance = 1,
   smoothness = 2,
-  skip_existing = FALSE,
+  skip_existing = TRUE,
   cleanup = FALSE
 )
 
 atlas_raw <- atlas_raw |>
   atlas_region_contextual("Unknown", "label")
-
-atlas_raw <- atlas_raw |>
-  atlas_view_gather()
 
 brainnetome <- atlas_raw
 

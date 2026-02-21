@@ -10,7 +10,8 @@ Description: Brainnetome atlas for the 'ggseg' ecosystem. Provides a
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
-    R (>= 3.5),
+    R (>= 3.5)
+Imports:
     ggseg.formats
 Suggests:
     ggseg,

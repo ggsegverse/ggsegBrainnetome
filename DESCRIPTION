@@ -9,7 +9,6 @@ Description: Brainnetome atlas for the 'ggseg' ecosystem. Provides a
     'ggseg_atlas' object with 2D polygon geometry for use with 'ggseg'.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Depends:
     R (>= 3.5),
     ggseg.formats

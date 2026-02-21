@@ -1,5 +1,4 @@
 library(testthat)
+library(ggsegBrainnetome)
 
 test_check("ggsegBrainnetome")
-
-# covr::zero_coverage(covr::package_coverage("."))

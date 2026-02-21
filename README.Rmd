@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  fig.width = 10, 
+  fig.width = 10,
   fig.retina = 3
 )
 ```
@@ -18,71 +18,46 @@ knitr::opts_chunk$set(
 # ggsegBrainnetome <img src='man/figures/logo.png' align="right" height="138.5" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/ggseg/ggsegBrainnetome/workflows/R-CMD-check/badge.svg)](https://github.com/ggseg/ggsegBrainnetome/actions)
+[![R-CMD-check](https://github.com/ggsegverse/ggsegBrainnetome/workflows/R-CMD-check/badge.svg)](https://github.com/ggsegverse/ggsegBrainnetome/actions)
 [![DOI](https://zenodo.org/badge/416644902.svg)](https://zenodo.org/badge/latestdoi/416644902)
 <!-- badges: end -->
 
-This package contains dataset for plotting the [Brainnetome](https://atlas.brainnetome.org/) atlas ggseg and ggseg3d. 
+This package contains the [Brainnetome](https://atlas.brainnetome.org/) atlas
+for plotting with ggseg.
 
-Yu C, Zhou Y, Liu Y, Jiang T, Dong H, Zhang Y, Walter M. Functional segregation of the human cingulate cortex is confirmed by functional connectivity based neuroanatomical parcellation. Neuroimage. 2011 Feb 14;54(4):2571-81. doi: 10.1016/j.neuroimage.2010.11.018. Epub 2010 Nov 10. PMID: 21073967. [pubmed](https://pubmed.ncbi.nlm.nih.gov/21073967/).
+Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z, Chu C, Xie S, Laird AR,
+Fox PT, Eickhoff SB, Yu C, Jiang T (2016). The Human Brainnetome Atlas: A New
+Brain Atlas Based on Connectional Architecture. *Cerebral Cortex*, 26(8):3508-3526.
+doi: [10.1093/cercor/bhw157](https://doi.org/10.1093/cercor/bhw157).
 
-To learn how to use these atlases, please look at the documentation for [ggseg](https://ggseg.github.io/ggseg/) and [ggseg3d](https://ggseg.github.io/ggseg3d)
+To learn how to use these atlases, please look at the documentation for
+[ggseg](https://ggsegverse.github.io/ggseg/).
 
 ## Installation
 
-We recommend installing the ggseg-atlases through the ggseg [r-universe](https://ggseg.r-universe.dev/ui#builds):
-
-```{r eval = FALSE}
-# Enable this universe
-options(repos = c(
-    ggseg = 'https://ggseg.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
-
-# Install some packages
-install.packages('ggsegBrainnetome')
-```
-
-You can install the released version of ggsegBrainnetome from [GitHub](https://github.com/) with:
+You can install ggsegBrainnetome from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("LCBC-UiO/ggsegBrainnetome")
+remotes::install_github("ggsegverse/ggsegBrainnetome")
 ```
+
+## 2D plotting
 
 ```{r, fig.height=7}
-library(ggseg)
-library(ggseg3d)
 library(ggsegBrainnetome)
+library(ggseg)
+library(ggplot2)
 
-plot(brainnetome) +
-  theme(legend.position = "bottom", 
-        legend.text = element_text(size = 9)) +
-  guides(fill = guide_legend(ncol = 6))
-
-```
-
-```{r "noneval", eval=FALSE}
-library(dplyr)
-ggseg3d(atlas = brainnetome_3d) %>% 
-  add_glassbrain() %>% 
-  pan_camera("right lateral")
-```
-
-```{r "orca", include=FALSE}
-library(dplyr)
-p <- ggseg3d(atlas = brainnetome_3d) %>%
-  add_glassbrain(hemisphere = "left")%>%
-  pan_camera("right lateral") %>%
-  plotly::add_annotations( text="Screen capture",
-                  legendtitle=TRUE, showarrow=FALSE,
-                  font = list(color = "#000000b4",
-                              family = 'sans serif',
-                              size = 50))
-plotly::orca(p, "man/figures/README-3d-plot.png")
-```
-
-```{r "incl", echo=FALSE}
-knitr::include_graphics("man/figures/README-3d-plot.png")
+ggplot() +
+  geom_brain(
+    atlas = brainnetome(),
+    mapping = aes(fill = label),
+    position = position_brain(hemi ~ view),
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(values = brainnetome()$palette, na.value = "grey") +
+  theme_void()
 ```
 
 ## Citation

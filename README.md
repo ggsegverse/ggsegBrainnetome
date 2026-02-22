@@ -1,4 +1,5 @@
 
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # ggsegBrainnetome <img src='man/figures/logo.png' align="right" height="138.5" />
@@ -9,69 +10,53 @@
 [![DOI](https://zenodo.org/badge/416644902.svg)](https://zenodo.org/badge/latestdoi/416644902)
 <!-- badges: end -->
 
-This package contains dataset for plotting the
-[Brainnetome](https://atlas.brainnetome.org/) atlas ggseg and ggseg3d.
+This package contains the [Brainnetome](https://atlas.brainnetome.org/)
+atlas for plotting with ggseg.
 
-Yu C, Zhou Y, Liu Y, Jiang T, Dong H, Zhang Y, Walter M. Functional
-segregation of the human cingulate cortex is confirmed by functional
-connectivity based neuroanatomical parcellation. Neuroimage. 2011 Feb
-14;54(4):2571-81. doi: 10.1016/j.neuroimage.2010.11.018. Epub 2010 Nov
-10. PMID: 21073967. [pubmed](https://pubmed.ncbi.nlm.nih.gov/21073967/).
+Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z, Chu C, Xie S,
+Laird AR, Fox PT, Eickhoff SB, Yu C, Jiang T (2016). The Human
+Brainnetome Atlas: A New Brain Atlas Based on Connectional Architecture.
+*Cerebral Cortex*, 26(8):3508-3526. doi:
+[10.1093/cercor/bhw157](https://doi.org/10.1093/cercor/bhw157).
 
 To learn how to use these atlases, please look at the documentation for
-[ggseg](https://ggsegverse.github.io/ggseg/) and
-[ggseg3d](https://ggsegverse.github.io/ggseg3d)
+[ggseg](https://ggsegverse.github.io/ggseg/).
 
 ## Installation
 
-We recommend installing the ggseg-atlases through the ggseg
-[r-universe](https://ggsegverse.r-universe.dev/ui#builds):
-
-``` r
-# Enable this universe
-options(repos = c(
-    ggsegverse = 'https://ggsegverse.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
-
-# Install some packages
-install.packages('ggsegBrainnetome')
-```
-
-You can install the released version of ggsegBrainnetome from
-[GitHub](https://github.com/) with:
+You can install ggsegBrainnetome from [GitHub](https://github.com/)
+with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("LCBC-UiO/ggsegBrainnetome")
+remotes::install_github("ggsegverse/ggsegBrainnetome")
 ```
 
+## 2D plotting
+
 ``` r
-library(ggseg)
-#> Loading required package: ggplot2
-library(ggseg3d)
 library(ggsegBrainnetome)
+library(ggseg)
+library(ggplot2)
 
-plot(brainnetome) +
-  theme(legend.position = "bottom", 
-        legend.text = element_text(size = 9)) +
-  guides(fill = guide_legend(ncol = 6))
+ggplot() +
+  geom_brain(
+    atlas = brainnetome(),
+    mapping = aes(fill = label),
+    position = position_brain(hemi ~ view),
+    show.legend = FALSE
+  ) +
+  scale_fill_manual(values = brainnetome()$palette, na.value = "grey") +
+  theme_void()
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
-
-``` r
-library(dplyr)
-ggseg3d(atlas = brainnetome_3d) %>% 
-  add_glassbrain() %>% 
-  pan_camera("right lateral")
-```
-
-<img src="man/figures/README-3d-plot.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-2-1.png"
+style="width:100.0%" />
 
 ## Citation
 
 Athanasia Monika Mowinckel. (2021). ggseg/ggsegBrainnetome: v0.0.1
-(v0.0.1). Zenodo. <https://doi.org/10.5281/zenodo.5569249>
+(v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.5569249
 
     @software{athanasia_monika_mowinckel_2021_5569249,
       author       = {Athanasia Monika Mowinckel},

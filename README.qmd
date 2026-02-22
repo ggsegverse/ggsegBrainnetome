@@ -1,16 +1,18 @@
 ---
-output: github_document
+format: gfm
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| label: setup
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
   fig.width = 10,
+  out.width = "100%",
   fig.retina = 3
 )
 ```
@@ -18,7 +20,7 @@ knitr::opts_chunk$set(
 # ggsegBrainnetome <img src='man/figures/logo.png' align="right" height="138.5" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/ggsegverse/ggsegBrainnetome/workflows/R-CMD-check/badge.svg)](https://github.com/ggsegverse/ggsegBrainnetome/actions)
+[![R-CMD-check](https://github.com/ggseg/ggsegBrainnetome/workflows/R-CMD-check/badge.svg)](https://github.com/ggseg/ggsegBrainnetome/actions)
 [![DOI](https://zenodo.org/badge/416644902.svg)](https://zenodo.org/badge/latestdoi/416644902)
 <!-- badges: end -->
 
@@ -31,20 +33,36 @@ Brain Atlas Based on Connectional Architecture. *Cerebral Cortex*, 26(8):3508-35
 doi: [10.1093/cercor/bhw157](https://doi.org/10.1093/cercor/bhw157).
 
 To learn how to use these atlases, please look at the documentation for
-[ggseg](https://ggsegverse.github.io/ggseg/).
+[ggseg](https://ggseg.github.io/ggseg/).
 
 ## Installation
 
+We recommend installing the ggseg-atlases through the ggseg
+[r-universe](https://ggseg.r-universe.dev/ui#builds):
+
+```{r}
+#| label: install-r-universe
+#| eval: false
+options(repos = c(
+  ggseg = "https://ggseg.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
+
+install.packages("ggsegBrainnetome")
+```
+
 You can install ggsegBrainnetome from [GitHub](https://github.com/) with:
 
-``` r
+```r
 # install.packages("remotes")
-remotes::install_github("ggsegverse/ggsegBrainnetome")
+remotes::install_github("ggseg/ggsegBrainnetome")
 ```
 
 ## 2D plotting
 
-```{r, fig.height=7}
+```{r}
+#| label: 2d-plot
+#| fig-height: 7
 library(ggsegBrainnetome)
 library(ggseg)
 library(ggplot2)

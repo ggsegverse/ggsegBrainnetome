@@ -1,10 +1,11 @@
 ---
-output: github_document
+format: gfm
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -44,7 +45,8 @@ remotes::install_github("ggsegverse/ggsegBrainnetome")
 
 ## 2D plotting
 
-```{r, fig.height=7}
+```{r}
+#| fig-height: 7
 library(ggsegBrainnetome)
 library(ggseg)
 library(ggplot2)

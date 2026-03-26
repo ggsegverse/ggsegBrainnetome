@@ -1,74 +1,34 @@
+# ggsegBrainnetome
 
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# ggsegBrainnetome <img src='man/figures/logo.png' align="right" height="138.5" />
-
-<!-- badges: start -->
-
-[![R-CMD-check](https://github.com/ggsegverse/ggsegBrainnetome/workflows/R-CMD-check/badge.svg)](https://github.com/ggsegverse/ggsegBrainnetome/actions)
-[![DOI](https://zenodo.org/badge/416644902.svg)](https://zenodo.org/badge/latestdoi/416644902)
-<!-- badges: end -->
-
-This package contains the [Brainnetome](https://atlas.brainnetome.org/)
-atlas for plotting with ggseg.
-
-Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z, Chu C, Xie S,
-Laird AR, Fox PT, Eickhoff SB, Yu C, Jiang T (2016). The Human
-Brainnetome Atlas: A New Brain Atlas Based on Connectional Architecture.
-*Cerebral Cortex*, 26(8):3508-3526. doi:
-[10.1093/cercor/bhw157](https://doi.org/10.1093/cercor/bhw157).
-
-To learn how to use these atlases, please look at the documentation for
-[ggseg](https://ggsegverse.github.io/ggseg/).
+Brainnetome Atlas for the ggsegverse Ecosystem.
 
 ## Installation
-
-You can install ggsegBrainnetome from [GitHub](https://github.com/)
-with:
 
 ``` r
 # install.packages("remotes")
 remotes::install_github("ggsegverse/ggsegBrainnetome")
 ```
 
-## 2D plotting
+## Usage
 
 ``` r
 library(ggsegBrainnetome)
 library(ggseg)
-library(ggplot2)
 
-ggplot() +
-  geom_brain(
-    atlas = brainnetome(),
-    mapping = aes(fill = label),
-    position = position_brain(hemi ~ view),
-    show.legend = FALSE
-  ) +
-  scale_fill_manual(values = brainnetome()$palette, na.value = "grey") +
-  theme_void()
+plot(brainnetome()) +
+  theme_brain()
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png"
-style="width:100.0%" />
+## Atlases
 
-## Citation
+### brainnetome
 
-Athanasia Monika Mowinckel. (2021). ggseg/ggsegBrainnetome: v0.0.1
-(v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.5569249
+Cortical parcellation with 105 regions per hemisphere based on connectional architecture (Fan et al., 2016).
 
-    @software{athanasia_monika_mowinckel_2021_5569249,
-      author       = {Athanasia Monika Mowinckel},
-      title        = {ggseg/ggsegBrainnetome: v0.0.1},
-      month        = oct,
-      year         = 2021,
-      publisher    = {Zenodo},
-      version      = {v0.0.1},
-      doi          = {10.5281/zenodo.5569249},
-      url          = {https://doi.org/10.5281/zenodo.5569249}
-    }
+![brainnetome](man/figures/brainnetome_snapshot.png)
 
-Please note that the ‘ggsegBrainnetome’ project is released with a
-[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
-this project, you agree to abide by its terms.
+### brainnetome\_sub
+
+Subcortical parcellation with 36 subregions covering amygdala, hippocampus, thalamus, caudate, putamen, pallidum, and nucleus accumbens.
+
+![brainnetome\_sub](man/figures/brainnetome_sub_snapshot.png)

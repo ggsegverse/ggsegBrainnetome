@@ -1,62 +1,47 @@
-# Create Brainnetome Atlas
+# Create Brainnetome Cortical Atlas
 #
 # Recreates the brainnetome cortical atlas from the BN_Atlas
-# annotation on fsaverage5 using ggsegExtra.
+# annotation on fsaverage5 using ggseg.extra vertex projection pipeline.
 #
 # Requirements:
-#   - ggsegExtra package
-#   - ggseg.formats package
+#   - FreeSurfer installed with fsaverage5 subject
+#   - ggseg.extra (>= 2.0.0.9000)
+#   - ggseg.formats
 #
 # Run with: Rscript data-raw/make_atlas.R
 
-Sys.setenv(RGL_USE_NULL = TRUE)
-
-library(dplyr)
 library(ggseg.extra)
 library(ggseg.formats)
 
-options(freesurfer.verbose = FALSE)
-options(chromote.timeout = 120)
-future::plan(future::sequential)
-progressr::handlers("cli")
-progressr::handlers(global = TRUE)
+Sys.setenv(FREESURFER_HOME = "/Applications/freesurfer/7.4.1")
 
 annot_files <- file.path(
   here::here("data-raw", "fsaverage5"),
   c("lh.BN_Atlas.annot", "rh.BN_Atlas.annot")
 )
 
-for (f in annot_files) {
-  if (!file.exists(f)) {
-    cli::cli_abort("Annotation not found: {.path {f}}")
-  }
-}
-
-cli::cli_h1("Creating brainnetome cortical atlas")
-
-atlas_raw <- create_cortical_from_annotation(
+brainnetome <- create_cortical_from_annotation(
   input_annot = annot_files,
   atlas_name = "brainnetome",
   output_dir = "data-raw",
-  tolerance = 1,
-  smoothness = 2,
+  tolerance = 0,
   skip_existing = TRUE,
   cleanup = FALSE
-)
-
-atlas_raw <- atlas_raw |>
+) |>
   atlas_region_contextual("Unknown", "label")
 
-brainnetome <- atlas_raw
-
-cli::cli_alert_success("Atlas created with {nrow(brainnetome$core)} regions")
 print(brainnetome)
+plot(brainnetome)
 
-brain_pals <- stats::setNames(
-  list(brainnetome$palette),
-  brainnetome$atlas
+.brainnetome <- brainnetome
+
+sysdata_env <- new.env(parent = emptyenv())
+sysdata_path <- here::here("R", "sysdata.rda")
+if (file.exists(sysdata_path)) load(sysdata_path, envir = sysdata_env)
+sysdata_env$.brainnetome <- .brainnetome
+save(
+  list = ls(sysdata_env, all.names = TRUE),
+  envir = sysdata_env,
+  file = sysdata_path,
+  compress = "xz"
 )
-save(brain_pals, file = here::here("R/sysdata.rda"), compress = "xz")
-
-usethis::use_data(brainnetome, overwrite = TRUE, compress = "xz")
-cli::cli_alert_success("Saved to data/brainnetome.rda")

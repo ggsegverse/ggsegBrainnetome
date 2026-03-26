@@ -9,9 +9,3 @@ navbar:
       icon: fa-github
       href: https://github.com/ggsegverse/ggsegBrainnetome
       aria-label: GitHub
-
-reference:
-  - title: Atlases
-    desc: Brain atlases bundled in this package
-    contents:
-      - has_concept("ggseg_atlases")

@@ -15,4 +15,26 @@
 #' @export
 #' @examples
 #' brainnetome()
+#' plot(brainnetome())
 brainnetome <- function() .brainnetome
+
+#' Brainnetome Subcortical Atlas
+#'
+#' Brain atlas for the Brainnetome subcortical parcellation with 36
+#' subregions covering amygdala, hippocampus, thalamus, caudate, putamen,
+#' pallidum, and nucleus accumbens.
+#'
+#' @family ggseg_atlases
+#'
+#' @references Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z,
+#'   Chu C, Xie S, Laird AR, Fox PT, Eickhoff SB, Yu C, Jiang T (2016).
+#'   The Human Brainnetome Atlas: A New Brain Atlas Based on Connectional
+#'   Architecture. *Cerebral Cortex*, 26(8):3508-3526.
+#'   \doi{10.1093/cercor/bhw157}
+#'
+#' @return A [ggseg.formats::ggseg_atlas] object (subcortical).
+#' @export
+#' @examples
+#' brainnetome_sub()
+#' plot(brainnetome_sub())
+brainnetome_sub <- function() .brainnetome_sub

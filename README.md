@@ -41,3 +41,10 @@ Cortical parcellation with 105 regions per hemisphere based on connectional arch
 Subcortical parcellation with 36 subregions covering amygdala, hippocampus, thalamus, caudate, putamen, pallidum, and nucleus accumbens.
 
 ![brainnetome\_sub](man/figures/brainnetome_sub_snapshot.png)
+
+## Data sources
+
+| Atlas | Source | Reference | Date obtained |
+|-------|--------|-----------|---------------|
+| brainnetome | FreeSurfer fsaverage5 annotation | Fan et al. (2016) [doi:10.1093/cercor/bhw157](https://doi.org/10.1093/cercor/bhw157) | 2021-10-14 |
+| brainnetome\_sub | Volumetric atlas from [atlas.brainnetome.org](http://atlas.brainnetome.org/download.html) | Fan et al. (2016) [doi:10.1093/cercor/bhw157](https://doi.org/10.1093/cercor/bhw157) | 2021-10-14 |

@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Brainnetome Atlas for the ggseg Ecosystem • ggsegBrainnetome</title>
+<title>Brainnetome Atlas for the ggsegverse Ecosystem • ggsegBrainnetome</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -18,9 +18,9 @@
 <link href="deps/Montserrat-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Brainnetome Atlas for the ggseg Ecosystem">
-<meta name="description" content="Brainnetome atlas for the ggseg ecosystem. Provides a ggseg_atlas object with 2D polygon geometry for use with ggseg.">
-<meta property="og:description" content="Brainnetome atlas for the ggseg ecosystem. Provides a ggseg_atlas object with 2D polygon geometry for use with ggseg.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Brainnetome Atlas for the ggsegverse Ecosystem">
+<meta name="description" content="Brainnetome atlas for the ggseg ecosystem. Provides cortical and subcortical ggseg_atlas objects with 2D polygon geometry and 3D vertex indices for use with ggseg and ggseg3d.">
+<meta property="og:description" content="Brainnetome atlas for the ggseg ecosystem. Provides cortical and subcortical ggseg_atlas objects with 2D polygon geometry and 3D vertex indices for use with ggseg and ggseg3d.">
 <meta property="og:image" content="https://ggsegverse.github.io/ggsegBrainnetome/logo.svg">
 </head>
 <body>
@@ -33,7 +33,7 @@
 
     <a class="navbar-brand me-2" href="index.html">ggsegBrainnetome</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,56 +67,51 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.svg" class="logo" alt=""><h1 id="ggsegbrainnetome-">ggsegBrainnetome <a class="anchor" aria-label="anchor" href="#ggsegbrainnetome-"></a>
+<img src="logo.svg" class="logo" alt=""><h1 id="ggsegbrainnetome">ggsegBrainnetome<a class="anchor" aria-label="anchor" href="#ggsegbrainnetome"></a>
 </h1>
 </div>
 <!-- badges: start -->
 
-<p>This package contains the <a href="https://atlas.brainnetome.org/" class="external-link">Brainnetome</a> atlas for plotting with ggseg.</p>
-<p>Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z, Chu C, Xie S, Laird AR, Fox PT, Eickhoff SB, Yu C, Jiang T (2016). The Human Brainnetome Atlas: A New Brain Atlas Based on Connectional Architecture. <em>Cerebral Cortex</em>, 26(8):3508-3526. doi: <a href="https://doi.org/10.1093/cercor/bhw157" class="external-link">10.1093/cercor/bhw157</a>.</p>
-<p>To learn how to use these atlases, please look at the documentation for <a href="https://ggsegverse.github.io/ggseg/" class="external-link">ggseg</a>.</p>
+<p>Brainnetome Atlas for the ggsegverse Ecosystem.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install ggsegBrainnetome from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<code class="sourceCode R"><span><span class="co"># From r-universe</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ggsegBrainnetome"</span>, repos <span class="op">=</span> <span class="st">"https://ggsegverse.r-universe.dev"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># From GitHub</span></span>
+<span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ggsegverse/ggsegBrainnetome"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="id_2d-plotting">2D plotting<a class="anchor" aria-label="anchor" href="#id_2d-plotting"></a>
+<h2 id="atlases">Atlases<a class="anchor" aria-label="anchor" href="#atlases"></a>
 </h2>
+<div class="section level3">
+<h3 id="brainnetome">brainnetome<a class="anchor" aria-label="anchor" href="#brainnetome"></a>
+</h3>
+<p>Cortical parcellation with 105 regions per hemisphere (Fan et al., 2016).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ggsegverse/ggsegBrainnetome" class="external-link">ggsegBrainnetome</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggsegverse.github.io/ggseg/" class="external-link">ggseg</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggsegverse.github.io/ggseg/reference/ggbrain.html" class="external-link">geom_brain</a></span><span class="op">(</span></span>
-<span>    atlas <span class="op">=</span> <span class="fu"><a href="reference/brainnetome.html">brainnetome</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">label</span><span class="op">)</span>,</span>
-<span>    position <span class="op">=</span> <span class="fu"><a href="https://ggsegverse.github.io/ggseg/reference/position_brain.html" class="external-link">position_brain</a></span><span class="op">(</span><span class="va">hemi</span> <span class="op">~</span> <span class="va">view</span><span class="op">)</span>,</span>
-<span>    show.legend <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="reference/brainnetome.html">brainnetome</a></span><span class="op">(</span><span class="op">)</span><span class="op">$</span><span class="va">palette</span>, na.value <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-2-1.png" style="width:100.0%"></p>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="reference/brainnetome.html">brainnetome</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-brainnetome-1.png" alt="" width="100%"></p>
 </div>
-<div class="section level2">
-<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
-</h2>
-<p>Athanasia Monika Mowinckel. (2021). ggseg/ggsegBrainnetome: v0.0.1 (v0.0.1). Zenodo. <a href="https://doi.org/10.5281/zenodo.5569249" class="external-link uri">https://doi.org/10.5281/zenodo.5569249</a></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="sc">@</span>software{athanasia_monika_mowinckel_2021_5569249,</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  author       <span class="ot">=</span> {Athanasia Monika Mowinckel},</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  title        <span class="ot">=</span> {ggseg<span class="sc">/</span>ggsegBrainnetome<span class="sc">:</span> v0.<span class="fl">0.1</span>},</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  month        <span class="ot">=</span> oct,</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  year         <span class="ot">=</span> <span class="dv">2021</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  publisher    <span class="ot">=</span> {Zenodo},</span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  version      <span class="ot">=</span> {v0.<span class="fl">0.1</span>},</span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>  doi          <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.5569249</span>},</span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>  url          <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.5569249</span>}</span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>}</span></code></pre></div>
-<p>Please note that the ‘ggsegBrainnetome’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="section level3">
+<h3 id="brainnetome_sub">brainnetome_sub<a class="anchor" aria-label="anchor" href="#brainnetome_sub"></a>
+</h3>
+<p>Subcortical parcellation with 36 subregions.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fu"><a href="reference/brainnetome_sub.html">brainnetome_sub</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-brainnetome_sub-1.png" alt="" width="100%"> ## Data source</p>
+<p>FreeSurfer fsaverage5 annotations + volumetric atlas from <a href="http://atlas.brainnetome.org/download.html" class="external-link">atlas.brainnetome.org</a>.</p>
+<ul>
+<li>
+<strong>Reference</strong>: Fan et al. (2016) <a href="https://doi.org/10.1093/cercor/bhw157" class="external-link">doi:10.1093/cercor/bhw157</a>
+</li>
+<li>
+<strong>Date obtained</strong>: 2021-10-14</li>
+</ul>
+</div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -147,14 +142,15 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Athanasia Mo Mowinckel <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-5756-0223" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/ggsegverse/ggsegBrainnetome/actions" class="external-link"><img src="https://github.com/ggsegverse/ggsegBrainnetome/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://zenodo.org/badge/latestdoi/416644902" class="external-link"><img src="https://zenodo.org/badge/416644902.svg" alt="DOI"></a></li>
+<li><a href="https://github.com/ggsegverse/ggsegBrainnetome/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ggsegverse/ggsegBrainnetome/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://ggsegverse.r-universe.dev/ggsegBrainnetome" class="external-link"><img src="https://ggsegverse.r-universe.dev/badges/ggsegBrainnetome" alt="r-universe"></a></li>
 </ul>
 </div>
 

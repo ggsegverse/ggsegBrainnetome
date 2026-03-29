@@ -4,11 +4,11 @@
 \name{ggsegBrainnetome-package}
 \alias{ggsegBrainnetome}
 \alias{ggsegBrainnetome-package}
-\title{ggsegBrainnetome: Brainnetome Atlas for the 'ggseg' Ecosystem}
+\title{ggsegBrainnetome: Brainnetome Atlas for the 'ggsegverse' Ecosystem}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Brainnetome atlas for the 'ggseg' ecosystem. Provides a 'ggseg_atlas' object with 2D polygon geometry for use with 'ggseg'.
+Brainnetome atlas for the 'ggseg' ecosystem. Provides cortical and subcortical 'ggseg_atlas' objects with 2D polygon geometry and 3D vertex indices for use with 'ggseg' and 'ggseg3d'.
 }
 \seealso{
 Useful links:
@@ -19,7 +19,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Athanasia Mo Mowinckel \email{a.m.mowinckel@psykologi.uio.no} (\href{https://orcid.org/0000-0002-5756-0223}{ORCID})
+\strong{Maintainer}: Athanasia Mo Mowinckel \email{a.m.mowinckel@psykologi.uio.no} (\href{https://orcid.org/0000-0002-5756-0223}{ORCID}) (drmowinckels)
 
 }
 \keyword{internal}

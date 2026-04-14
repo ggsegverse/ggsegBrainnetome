@@ -89,6 +89,12 @@ if (file.exists(sysdata_path)) {
 
 .brainnetome_sub <- brainnetome_sub
 
+labels <- .brainnetome_sub$core$label
+set.seed(42)
+.brainnetome_sub$palette <- setNames(
+  grDevices::hcl.colors(length(labels), palette = "Set 3"),
+  labels
+)
 
 usethis::use_data(
   .brainnetome,

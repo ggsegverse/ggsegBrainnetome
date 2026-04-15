@@ -9,6 +9,9 @@ describe("brainnetome atlas", {
   })
 
   it("renders with ggseg", {
+    skip_if_not_installed("ggseg")
+    skip_if_not_installed("ggplot2")
+    skip_if_not_installed("vdiffr")
     p <- ggplot2::ggplot() +
       ggseg::geom_brain(
         atlas = brainnetome(),

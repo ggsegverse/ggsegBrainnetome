@@ -40,7 +40,7 @@ brainnetome_sub()
 #> Hemispheres: NA
 #> Views: axial_1, axial_2, axial_3, axial_4, axial_5, coronal_1, coronal_2,
 #> coronal_3, coronal_4, sagittal
-#> Palette: ✖
+#> Palette: ✔
 #> Rendering: ✔ ggseg
 #> ✔ ggseg3d (meshes)
 #> ────────────────────────────────────────────────────────────────────────────────
@@ -84,5 +84,8 @@ brainnetome_sub()
 #> 35 NA    region 0245 region_0245
 #> 36 NA    region 0246 region_0246
 plot(brainnetome_sub())
-#> Error in palette(...): Insufficient values in manual scale. 36 needed but only 0 provided.
+#> Warning: No shared levels found between `names(values)` of the manual scale and the
+#> data's fill values.
+#> Warning: No shared levels found between `names(values)` of the manual scale and the
+#> data's fill values.
 ```

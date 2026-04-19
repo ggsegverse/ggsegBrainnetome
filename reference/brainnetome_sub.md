@@ -84,8 +84,4 @@ brainnetome_sub()
 #> 35 NA    region 0245 region_0245
 #> 36 NA    region 0246 region_0246
 plot(brainnetome_sub())
-#> Warning: No shared levels found between `names(values)` of the manual scale and the
-#> data's fill values.
-#> Warning: No shared levels found between `names(values)` of the manual scale and the
-#> data's fill values.
 ```

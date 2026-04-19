@@ -15,7 +15,7 @@
 #' @export
 #' @examples
 #' brainnetome()
-#' plot(brainnetome())
+#' \dontrun{plot(brainnetome())}
 brainnetome <- function() .brainnetome
 
 #' Brainnetome Subcortical Atlas
@@ -36,5 +36,5 @@ brainnetome <- function() .brainnetome
 #' @export
 #' @examples
 #' brainnetome_sub()
-#' plot(brainnetome_sub())
+#' \dontrun{plot(brainnetome_sub())}
 brainnetome_sub <- function() .brainnetome_sub

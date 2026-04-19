@@ -30,7 +30,7 @@ future::plan(future::sequential)
 progressr::handlers("cli")
 progressr::handlers(global = TRUE)
 
-# ── Obtain volumetric atlas ──────────────────────────────────────
+# ── Obtain volumetric atlas ───────────────�
 # Download the Brainnetome volumetric atlas from:
 # http://atlas.brainnetome.org/download.html
 # File: BN_Atlas_246_1mm.nii.gz (contains both cortical + subcortical)
@@ -47,7 +47,7 @@ if (!file.exists(vol_file)) {
   ))
 }
 
-# ── Extract subcortical labels only ──────────────────────────────
+# ── Extract subcortical labels only ─────────────
 # Labels 211-246 are subcortical in the Brainnetome atlas
 # We need to zero out cortical labels (1-210) first
 
@@ -64,7 +64,7 @@ if (!file.exists(sub_vol_file)) {
   )
 }
 
-# ── Create subcortical atlas ─────────────────────────────────────
+# ── Create subcortical atlas ───────────────�
 cli::cli_h1("Creating brainnetome subcortical atlas")
 
 brainnetome_sub <- create_subcortical_from_volume(
@@ -81,7 +81,7 @@ brainnetome_sub <- brainnetome_sub |>
 cli::cli_alert_success("brainnetome_sub: {nrow(brainnetome_sub$core)} regions")
 print(brainnetome_sub)
 
-# ── Update palettes (merge with existing cortical palette) ────────
+# ── Update palettes (merge with existing cortical palette) ─────�
 sysdata_path <- here::here("R/sysdata.rda")
 if (file.exists(sysdata_path)) {
   dt <- load(sysdata_path)
@@ -89,6 +89,12 @@ if (file.exists(sysdata_path)) {
 
 .brainnetome_sub <- brainnetome_sub
 
+labels <- .brainnetome_sub$core$label
+set.seed(42)
+.brainnetome_sub$palette <- setNames(
+  grDevices::hcl.colors(length(labels), palette = "Set 3"),
+  labels
+)
 
 usethis::use_data(
   .brainnetome,

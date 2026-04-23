@@ -61,31 +61,15 @@ pak::pak("ggsegverse/ggsegBrainnetome")
 #| fig-height: 7
 library(ggseg)
 library(ggsegBrainnetome)
-library(ggplot2)
 
-ggplot() +
-  geom_brain(
-    atlas = brainnetome(),
-    mapping = aes(fill = label),
-    position = position_brain(hemi ~ view),
-    show.legend = FALSE
-  ) +
-  scale_fill_manual(values = brainnetome()$palette, na.value = "grey") +
-  theme_void()
+plot(brainnetome())
 ```
 
 ## Subcortical atlas
 
 ```{r}
 #| label: brainnetome_sub
-ggplot() +
-  geom_brain(
-    atlas = brainnetome_sub(),
-    mapping = aes(fill = label),
-    show.legend = FALSE
-  ) +
-  scale_fill_manual(values = brainnetome_sub()$palette, na.value = "grey") +
-  theme_void()
+plot(brainnetome_sub())
 ```
 
 ## Data source

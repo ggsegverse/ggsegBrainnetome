@@ -16,7 +16,7 @@ pallidum, and nucleus accumbens.
 }
 \examples{
 brainnetome_sub()
-plot(brainnetome_sub())
+\dontrun{plot(brainnetome_sub())}
 }
 \references{
 Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z,
@@ -30,3 +30,4 @@ Other ggseg_atlases:
 \code{\link{brainnetome}()}
 }
 \concept{ggseg_atlases}
+\concept{subcortical_atlases}

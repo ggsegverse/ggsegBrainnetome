@@ -15,7 +15,7 @@ per hemisphere. Contains 2D polygon geometry for \code{\link[ggseg:ggbrain]{ggse
 }
 \examples{
 brainnetome()
-plot(brainnetome())
+\dontrun{plot(brainnetome())}
 }
 \references{
 Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z,
@@ -28,4 +28,5 @@ Architecture. \emph{Cerebral Cortex}, 26(8):3508-3526.
 Other ggseg_atlases: 
 \code{\link{brainnetome_sub}()}
 }
+\concept{cortical_atlases}
 \concept{ggseg_atlases}

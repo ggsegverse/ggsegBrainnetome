@@ -4,6 +4,7 @@
 #' per hemisphere. Contains 2D polygon geometry for [ggseg::geom_brain()].
 #'
 #' @family ggseg_atlases
+#' @family cortical_atlases
 #'
 #' @references Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z,
 #'   Chu C, Xie S, Laird AR, Fox PT, Eickhoff SB, Yu C, Jiang T (2016).
@@ -25,6 +26,7 @@ brainnetome <- function() .brainnetome
 #' pallidum, and nucleus accumbens.
 #'
 #' @family ggseg_atlases
+#' @family subcortical_atlases
 #'
 #' @references Fan L, Li H, Zhuo J, Zhang Y, Wang J, Chen L, Yang Z,
 #'   Chu C, Xie S, Laird AR, Fox PT, Eickhoff SB, Yu C, Jiang T (2016).

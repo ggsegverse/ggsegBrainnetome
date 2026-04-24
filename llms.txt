@@ -34,17 +34,8 @@ pak::pak("ggsegverse/ggsegBrainnetome")
 ``` r
 library(ggseg)
 library(ggsegBrainnetome)
-library(ggplot2)
 
-ggplot() +
-  geom_brain(
-    atlas = brainnetome(),
-    mapping = aes(fill = label),
-    position = position_brain(hemi ~ view),
-    show.legend = FALSE
-  ) +
-  scale_fill_manual(values = brainnetome()$palette, na.value = "grey") +
-  theme_void()
+plot(brainnetome())
 ```
 
 ![](reference/figures/README-brainnetome-1.png)
@@ -52,14 +43,7 @@ ggplot() +
 ## Subcortical atlas
 
 ``` r
-ggplot() +
-  geom_brain(
-    atlas = brainnetome_sub(),
-    mapping = aes(fill = label),
-    show.legend = FALSE
-  ) +
-  scale_fill_manual(values = brainnetome_sub()$palette, na.value = "grey") +
-  theme_void()
+plot(brainnetome_sub())
 #> Warning: No shared levels found between `names(values)` of the manual scale and the
 #> data's fill values.
 #> No shared levels found between `names(values)` of the manual scale and the

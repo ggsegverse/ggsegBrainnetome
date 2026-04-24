@@ -83,5 +83,5 @@ brainnetome_sub()
 #> 34 NA    region 0244 region_0244
 #> 35 NA    region 0245 region_0245
 #> 36 NA    region 0246 region_0246
-plot(brainnetome_sub())
+if (FALSE) plot(brainnetome_sub()) # \dontrun{}
 ```

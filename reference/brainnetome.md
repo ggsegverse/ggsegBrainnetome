@@ -256,5 +256,5 @@ brainnetome()
 #> 208 right iOccG_R       rh_iOccG_R      
 #> 209 right msOccG_R      rh_msOccG_R     
 #> 210 right lsOccG_R      rh_lsOccG_R     
-plot(brainnetome())
+if (FALSE) plot(brainnetome()) # \dontrun{}
 ```

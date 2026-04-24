@@ -44,10 +44,6 @@ plot(brainnetome())
 
 ``` r
 plot(brainnetome_sub())
-#> Warning: No shared levels found between `names(values)` of the manual scale and the
-#> data's fill values.
-#> No shared levels found between `names(values)` of the manual scale and the
-#> data's fill values.
 ```
 
 ![](reference/figures/README-brainnetome_sub-1.png)

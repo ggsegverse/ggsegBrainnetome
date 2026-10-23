@@ -7,8 +7,8 @@
 # ggseg.extra::prepare_subcortical_mni152(): it registers the MNI152 parcels
 # into fs5 aseg space via the fixed mni152.register.dat transform, replaces the
 # lumped aseg structures they subdivide, and returns the merged volume plus a
-# combined colour table ready for the subcortical pipeline. aseg_context() then
-# demotes the surrounding brain to grey.
+# combined colour table ready for the subcortical pipeline, with the
+# surrounding brain declared as grey anatomical context.
 #
 # The 36 parcels cover amygdala, hippocampus, thalamus, caudate, putamen,
 # pallidum and nucleus accumbens.
@@ -70,7 +70,6 @@ bn_raw <- create_subcortical_from_volume(
   atlas_name = "brainnetome_sub",
   output_dir = data_raw,
   slabs = subcort_slabs,
-  dilate = 2L,
   skip_existing = TRUE,
   cleanup = FALSE
 )
@@ -81,10 +80,31 @@ bn_raw <- create_subcortical_from_volume(
 # close, then a single simplify pass trims the whole atlas under the
 # large-atlas threshold.
 brainnetome_sub <- bn_raw |>
-  aseg_context(focus = "region_0", match_on = "label") |>
+  # `prepare_subcortical_mni152()` declares every `aseg` structure it kept as
+  # context, the cerebral white matter included, so the inside of the cortical
+  # ribbon arrives filled in and reads as a blob. Punch it out, then drop the
+  # structures this atlas does not want behind its parcels. The punch comes
+  # first: remove the white matter and there is nothing left to subtract.
+# Only the cerebral white matter goes; the cerebellar white matter stays, or
+# the cerebellum thins to a sliver instead of reading as a solid structure.
+  ggseg.formats::atlas_region_op(
+    x = "Cerebral-Cortex$",
+    y = "Cerebral-White-Matter$",
+    action = "difference",
+    into = "cortex"
+  ) |>
+  ggseg.formats::atlas_region_remove(
+    paste(
+      "Cerebral-Cortex$", "Cerebral-White-Matter", "WM-hypointensities",
+      "-Ventricle", "-Vent$", "CSF", "choroid-plexus", "vessel", "CC_",
+      sep = "|"
+    ),
+    match_on = "label"
+  ) |>
   atlas_view_gather() |>
-  atlas_smooth(smoothness = 0.4, exclude = "^cortex") |>
-  atlas_smooth(smoothness = 1, labels = "^cortex") |>
+  atlas_dilate(0.6, exclude = ggseg.formats::context()) |>
+  atlas_smooth(smoothness = 0.4, exclude = ggseg.formats::context()) |>
+  atlas_smooth(smoothness = 1, labels = ggseg.formats::context()) |>
   atlas_simplify(keep = 0.15)
 
 cli::cli_alert_success("brainnetome_sub: {nrow(brainnetome_sub$core)} regions")

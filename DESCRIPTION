@@ -30,7 +30,8 @@ Suggests:
     testthat (>= 3.0.0),
     vdiffr
 Remotes:
-    ggsegverse/ggseg
+    ggsegverse/ggseg,
+    ggsegverse/ggseg.formats
 URL: https://github.com/ggsegverse/ggsegBrainnetome
 BugReports: https://github.com/ggsegverse/ggsegBrainnetome/issues
 Roxygen: list(markdown = TRUE)
